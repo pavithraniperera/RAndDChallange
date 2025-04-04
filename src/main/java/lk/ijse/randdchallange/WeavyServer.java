@@ -9,6 +9,8 @@ public class WeavyServer {
     private static final String API_KEY = "wys_hMWpXdekxcn9Gc8Ioah3azOllzUZ7l3HN9yB";
     private final OkHttpClient httpClient = new OkHttpClient();
 
+
+    //POST request
     public String createUser(String name, String email) throws IOException {
         String json = "{ \"name\": \"" + name + "\", \"email\": \"" + email + "\" }";
 
@@ -18,6 +20,19 @@ public class WeavyServer {
                 .post(body)
                 .addHeader("Authorization", "Bearer " + API_KEY)
                 .addHeader("Content-Type", "application/json")
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            return response.body().string();
+        }
+    }
+
+    //Get Request
+    public String listUsers() throws IOException {
+        Request request = new Request.Builder()
+                .url(BASE_URL)
+                .get()
+                .addHeader("Authorization", "Bearer " + API_KEY)
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {
