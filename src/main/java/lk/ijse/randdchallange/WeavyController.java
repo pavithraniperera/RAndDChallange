@@ -21,6 +21,15 @@ public class WeavyController {
         return weavyServer.listUsers();
     }
 
+    @PutMapping("/{userId}")
+    public String updateUser(@PathVariable String userId,
+                             @RequestParam String newName,
+                             @RequestParam String newEmail) throws IOException {
+        return weavyServer.updateUser(userId, newName, newEmail);
+    }
+
+
+
 
 
 
