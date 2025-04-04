@@ -28,6 +28,11 @@ public class WeavyController {
         return weavyServer.updateUser(userId, newName, newEmail);
     }
 
+    @DeleteMapping("/{userId}")
+    public String deleteUser(@PathVariable String userId) throws IOException {
+        return weavyServer.deleteUser(userId);
+    }
+
 
 
 
