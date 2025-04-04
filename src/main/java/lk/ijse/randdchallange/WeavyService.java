@@ -1,10 +1,12 @@
 package lk.ijse.randdchallange;
 
 import okhttp3.*;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-public class WeavyServer {
+@Service
+public class WeavyService {
     private static final String BASE_URL = "https://8015b5dbc0724d38882ac90397c27649.weavy.io/api/users";
     private static final String API_KEY = "wys_hMWpXdekxcn9Gc8Ioah3azOllzUZ7l3HN9yB";
     private final OkHttpClient httpClient = new OkHttpClient();
