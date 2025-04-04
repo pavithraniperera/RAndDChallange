@@ -1,10 +1,7 @@
 package lk.ijse.randdchallange;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -18,6 +15,13 @@ public class WeavyController {
     public String createUser(@RequestParam String name, @RequestParam String email) throws IOException {
         return weavyServer.createUser(name, email);
     }
+
+    @GetMapping("/list")
+    public String listUsers() throws IOException {
+        return weavyServer.listUsers();
+    }
+
+
 
 
 
