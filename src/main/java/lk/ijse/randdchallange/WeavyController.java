@@ -12,8 +12,8 @@ public class WeavyController {
     private WeavyService weavyServer;
 
     @PostMapping("/create")
-    public String createUser(@RequestParam String name, @RequestParam String email) throws IOException {
-        return weavyServer.createUser(name, email);
+    public String createUser(@RequestParam String id,@RequestParam String name, @RequestParam String email) throws IOException {
+        return weavyServer.createUser(id,name, email);
     }
 
     @GetMapping("/list")

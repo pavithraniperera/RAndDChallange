@@ -13,8 +13,12 @@ public class WeavyService {
 
 
     //POST request
-    public String createUser(String name, String email) throws IOException {
-        String json = "{ \"name\": \"" + name + "\", \"email\": \"" + email + "\" }";
+    public String createUser(String uid,String name, String email) throws IOException {
+        String json = "{ " +
+                "\"uid\": \"" + uid + "\"," +
+                "\"name\": \"" + name + "\"," +
+                "\"email\": \"" + email + "\"" +
+                " }";
 
         RequestBody body = RequestBody.create(json, MediaType.get("application/json"));
         Request request = new Request.Builder()
