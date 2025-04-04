@@ -40,4 +40,34 @@ public class WeavyServer {
         }
     }
 
+    // Patch
+    public String updateUser(String userId, String newName, String newEmail) throws IOException {
+        String json = "{ \"name\": \"" + newName + "\", \"email\": \"" + newEmail + "\" }";
+
+        RequestBody body = RequestBody.create(json, MediaType.get("application/json"));
+        Request request = new Request.Builder()
+                .url(BASE_URL + "/" + userId)
+                .patch(body)
+                .addHeader("Authorization", "Bearer " + API_KEY)
+                .addHeader("Content-Type", "application/json")
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            return response.body().string();
+        }
+    }
+
+    //Delete
+    public String deleteUser(String userId) throws IOException {
+        Request request = new Request.Builder()
+                .url(BASE_URL + "/" + userId)
+                .delete()
+                .addHeader("Authorization", "Bearer " + API_KEY)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            return response.body().string();
+        }
+    }
+
 }
